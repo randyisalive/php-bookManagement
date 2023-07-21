@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login_template.php');
+    header('Location: /templates/login_template.php');
 }
 
 ?>
@@ -19,6 +19,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <h1>Hello World</h1>
     <?php echo $_SESSION['username']; ?>
+    <a href="services/delete_session.php">Log out</a>
 
 </body>
 

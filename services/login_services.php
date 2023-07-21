@@ -10,11 +10,16 @@ include 'db.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Log in - Book Management System</title>
 </head>
 
 <body>
     <?php
+
+    // dirname
+    $path = __FILE__;
+
+    //POST data
     $username_post = $_POST['username'];
     $password_post = $_POST['password'];
 
@@ -39,7 +44,7 @@ include 'db.php';
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['password'] = $row['password'];
-                header("Location: http://localhost/detikProject/index.php");
+                header("Location: ../index.php");
             } else {
                 echo "Log in Error!!! " . $username_post . $password_post;
             }
