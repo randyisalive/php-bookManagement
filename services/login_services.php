@@ -16,9 +16,6 @@ include 'db.php';
 <body>
     <?php
 
-    // dirname
-    $path = __FILE__;
-
     //POST data
     $username_post = $_POST['username'];
     $password_post = $_POST['password'];
