@@ -25,17 +25,17 @@ include 'services/db.php'; ?>
                     $temp->execute();
                     $result = $temp->get_result();
                     if ($result->num_rows > 0) : ?>
-                        <thead>
+                    <thead>
 
-                            <tr>
-                                <th>#</th>
-                                <th scope="col">Book Title</th>
-                                <th scope="col">Category</th>
-                                <th>Option</th>
-                            </tr>
-                        </thead>
+                        <tr>
+                            <th>#</th>
+                            <th scope="col">Book Title</th>
+                            <th scope="col">Category</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
                     <?php else : ?>
-                        <h1>NO DATA</h1>
+                    <h1>NO DATA</h1>
                     <?php endif; ?>
                     <tbody>
 
@@ -67,7 +67,9 @@ include 'services/db.php'; ?>
                                 echo '<a href="./templates/book_detail.php?id=';
                                 echo $row['id'];
                                 echo '" class="btn btn-primary me-2">Detail</a>';
-                                echo '<a href="" class="btn btn-warning">Edit</a>';
+                                echo '<a href="./templates/book_edit.php?id=';
+                                echo $row['id'];
+                                echo '" class="btn btn-warning">Edit</a>';
                                 $x++;
                             }
                         } else {

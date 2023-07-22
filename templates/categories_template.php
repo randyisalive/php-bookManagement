@@ -1,6 +1,7 @@
 <?php
 include '../services/db.php';
 
+
 $sql = "SELECT * FROM bookcategories";
 $temp = $conn->prepare($sql);
 
