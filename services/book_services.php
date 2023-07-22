@@ -20,6 +20,8 @@ error: The error code associated with the file upload (0 if no errors).
 
 size: The size of the uploaded file in bytes. */
 
+//user_id
+$user_id = $_SESSION['user_id'];
 
 // declare book post variable
 $book_title = $_POST['title'];
@@ -39,7 +41,8 @@ $bookCoverName = $bookCover['name'];
 $bookCoverTmp = $bookCover['tmp_name'];
 
 
-$sql = "INSERT INTO books (title, category, description, total, book_file, cover_page) VALUES ('$book_title', '$book_category', '$book_description', '$book_quantity', '$bookFileName', '$bookCoverName')";
+
+$sql = "INSERT INTO books (title, category, description, total, book_file, cover_page, user_id) VALUES ('$book_title', '$book_category', '$book_description', '$book_quantity', '$bookFileName', '$bookCoverName', '$user_id')";
 $temp = $conn->prepare($sql);
 if ($temp === false) {
     echo "Error executing query" . $conn->error;

@@ -11,6 +11,7 @@
                     <?php
                     // check wheather the user is on the index page, 
                     $indexPage = '/php-bookmanagement/index.php';
+                    $categoriesPage = '/php-bookManagement/templates/categories_template.php';
                     if ($_SERVER['PHP_SELF'] == $indexPage) : ?>
                     <a class="nav-link active" href="index.php">Home</a>
                     <?php else : ?>
@@ -19,27 +20,14 @@
                     <?php endif; ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="templates/book_form.php">Add Books</a>
+                    <a class="nav-link" href="/php-bookManagement/templates/book_form.php">Add Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
-                </li>
-                <?php
-                session_start();
-                if (isset($_SESSION['username'])) : ?>
-                <!-- If user is logged in, show the username in the navbar -->
-                <li class="nav-item">
-                    <span class="navbar-text">Welcome, <?php echo $_SESSION['username']; ?></span>
+                    <a class="nav-link" href="/php-bookManagement/templates/categories_template.php">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services/delete_session.php">Logout</a>
+                    <a class="nav-link" href="/php-bookManagement/services/delete_session.php">Log out</a>
                 </li>
-                <?php else : ?>
-                <!-- If user is not logged in, show the login link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <?php endif; ?>
             </ul>
         </div>
     </div>

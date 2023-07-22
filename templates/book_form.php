@@ -28,9 +28,24 @@
                                 <label for="category" class="form-label">Book Category</label>
                                 <select class="form-select" id="category" name="category" required>
                                     <option value="">Select a category</option>
-                                    <option value="fiction">Fiction</option>
-                                    <option value="non-fiction">Non-Fiction</option>
-                                    <option value="fantasy">Fantasy</option>
+
+                                    <?php
+                                    include '../services/db.php';
+                                    $sql = "SELECT * FROM bookcategories";
+                                    $temp = $conn->prepare($sql);
+                                    $temp->execute();
+                                    $result = $temp->get_result();
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="';
+                                            echo $row['categories'];
+                                            echo '">';
+                                            echo $row['categories'];
+                                            echo '</option>';
+                                        }
+                                    }
+                                    ?>;
                                     <!-- Add more options as needed -->
                                 </select>
                             </div>

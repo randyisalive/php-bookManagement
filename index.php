@@ -19,40 +19,68 @@ include 'services/db.php'; ?>
             <div class="col">
                 <h2 class="text-center mb-4">Book Listing</h2>
                 <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Book Title</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
+                    <?php
+                    $sql = 'SELECT id,title,category FROM books';
+                    $temp = $conn->prepare($sql);
+                    $temp->execute();
+                    $result = $temp->get_result();
+                    if ($result->num_rows > 0) : ?>
+                        <thead>
+
+                            <tr>
+                                <th>#</th>
+                                <th scope="col">Book Title</th>
+                                <th scope="col">Category</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
+                    <?php else : ?>
+                        <h1>NO DATA</h1>
+                    <?php endif; ?>
                     <tbody>
 
-                        <?php
-                        $sql = 'SELECT * FROM books';
-                        $temp = $conn->prepare($sql);
-                        $temp->execute();
-                        $result = $temp->get_result();
 
+                        <?php
+                        $x = 1; // number of table
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo
-                                '<tr><td>';
+                                echo '<a href="">';
+                                echo '<tr><td>';
+                                echo $x;
+                                echo '</td>';
+                                echo '<td>';
                                 echo $row['title'];
                                 echo '</td><td>';
-                                echo $row['category'];
-                                echo '</td><td>';
-                                echo $row['description'];
-                                echo '</td><td>';
-                                echo $row['total'];
-                                echo '</td></tr>';
+                                if ($row['category'] == 1) {
+                                    echo "Fiction";
+                                    echo '</td>';
+                                } else if ($row['category'] == 2) {
+                                    echo "Non-Fiction";
+                                    echo '</td>';
+                                } else if ($row['category'] == 3) {
+                                    echo "Fantasy";
+                                    echo '</td>';
+                                } else {
+                                    echo "NO CATEGORY";
+                                }
+                                echo '<td>';
+                                echo '<a href="./templates/book_detail.php?id=';
+                                echo $row['id'];
+                                echo '" class="btn btn-primary me-2">Detail</a>';
+                                echo '<a href="" class="btn btn-warning">Edit</a>';
+                                $x++;
                             }
                         } else {
                             echo "Empty Book Shelf";
                         }
 
                         ?>
+                        <a href=""></a>
+
+
+
+
+
 
 
                         <!-- Sample book data (replace with dynamic data from back-end) -->
