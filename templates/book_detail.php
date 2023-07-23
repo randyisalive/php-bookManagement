@@ -24,7 +24,7 @@ $row = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Details</title>
+    <title><?= $row['title'] ?> - Library System</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -39,19 +39,7 @@ $row = $result->fetch_assoc();
             <div class="col-md-8">
                 <!-- Book Details -->
                 <h2><?php echo $row['title'] ?></h2>
-                <p><strong>Category:</strong><?php
-                                                if ($row['category'] == 1) {
-                                                    echo " Fiction";
-                                                    echo '</td>';
-                                                } else if ($row['category'] == 2) {
-                                                    echo " Non-Fiction";
-                                                    echo '</td>';
-                                                } else if ($row['category'] == 3) {
-                                                    echo " Fantasy";
-                                                    echo '</td>';
-                                                } else {
-                                                    echo " NO CATEGORY";
-                                                }
+                <p><strong>Category: </strong><?= $row['category'];
 
                                                 ?></p>
                 <p><strong>Description: </strong><?= $row['description']; ?></p>

@@ -1,5 +1,7 @@
 <?php
-include 'services/db.php'; ?>
+include 'services/db.php';
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +19,67 @@ include 'services/db.php'; ?>
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h2 class="text-center mb-4">Book Listing</h2>
-                <table class="table table-striped">
+                <div class="d-flex justify-content-center w-100">
+                    <div class="d-flex align-items-center" style="width: 55vw;">
+                        <h2 class="text-center">Book Listing</h2>
+
+                    </div>
+                    <form action="index.php" method="get" class="align-items-center d-flex gap-2" style="width: 13vw;">
+                        <select name="category" id="category" class="form-control">
+                            <option value="all">All Categories</option>
+                            <?php
+                            $sql = "SELECT * FROM bookcategories";
+                            $temp = $conn->prepare($sql);
+                            $temp->execute();
+                            $result = $temp->get_result();
+
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="';
+                                    echo $row['categories'];
+                                    echo '">';
+                                    echo $row['categories'];
+                                    echo '</option>';
+                                }
+                            }
+                            ?>
+
+                            <!-- Add more options for other categories dynamically -->
+                        </select>
+                        <input type="submit" value="Filter" class="btn btn-primary">
+                    </form>
+
+
+                </div>
+                <!-- Assuming you have a list of categories available in your database -->
+
+                <table class="table table-striped text-center">
                     <?php
-                    $sql = 'SELECT id,title,category FROM books';
+                    $user_id = $_SESSION['user_id'];
+
+
+
+                    if (!isset($_GET['category'])) { // check if $filter is assing or not
+                        $filter = $_GET['category'];
+                        $filter = "all";
+                    } else {
+                        $filter = $_GET['category'];
+                    }
+                    if ($user_id == 1) {
+                        // 1 is mean Admin 
+                        if ($filter == "all") {
+                            $sql = "SELECT * FROM books";
+                        } else {
+                            $sql = "SELECT * FROM books WHERE category = '$filter'";
+                        }
+                    } else {
+                        if ($filter == "all" || !isset($filter)) {
+                            $sql = "SELECT * FROM books WHERE user_id = '$user_id'";
+                        } else {
+                            $sql = "SELECT * FROM books WHERE category = '$filter' AND user_id='$user_id'";
+                        }
+                    }
+
                     $temp = $conn->prepare($sql);
                     $temp->execute();
                     $result = $temp->get_result();
@@ -35,12 +94,19 @@ include 'services/db.php'; ?>
                         </tr>
                     </thead>
                     <?php else : ?>
-                    <h1>NO DATA</h1>
+                    <div class="d-flex vh-100 justify-content-center align-items-center">
+                        <h1>NO DATA</h1>
+
+
+                    </div>
                     <?php endif; ?>
                     <tbody>
 
 
                         <?php
+
+
+
                         $x = 1; // number of table
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
@@ -51,18 +117,8 @@ include 'services/db.php'; ?>
                                 echo '<td>';
                                 echo $row['title'];
                                 echo '</td><td>';
-                                if ($row['category'] == 1) {
-                                    echo "Fiction";
-                                    echo '</td>';
-                                } else if ($row['category'] == 2) {
-                                    echo "Non-Fiction";
-                                    echo '</td>';
-                                } else if ($row['category'] == 3) {
-                                    echo "Fantasy";
-                                    echo '</td>';
-                                } else {
-                                    echo "NO CATEGORY";
-                                }
+                                echo $row['category'];
+                                echo '</td>';
                                 echo '<td>';
                                 echo '<a href="./templates/book_detail.php?id=';
                                 echo $row['id'];
@@ -72,12 +128,9 @@ include 'services/db.php'; ?>
                                 echo '" class="btn btn-warning">Edit</a>';
                                 $x++;
                             }
-                        } else {
-                            echo "Empty Book Shelf";
                         }
 
                         ?>
-                        <a href=""></a>
 
 
 
@@ -94,6 +147,7 @@ include 'services/db.php'; ?>
             </div>
         </div>
     </div>
+
 
     <!-- Include Bootstrap JS (Optional, for certain Bootstrap features) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
