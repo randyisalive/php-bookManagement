@@ -46,6 +46,10 @@ $row = $result->fetch_assoc();
                 <p><strong>Quantity: </strong><?= $row['total']; ?></p>
                 <!-- Add more book details as needed -->
             </div>
+            <div class="d-flex vw-100 justify-content-center mt-5">
+                <a href="../export_excel.php?id=<?= $row['id'] ?>" class="btn btn-primary">Export to Excel</a>
+
+            </div>
         </div>
     </div>
 

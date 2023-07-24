@@ -48,11 +48,11 @@ $result = $temp->get_result();
                                     echo $row['categories'];
                                     echo '</div>';
                                     echo '
-                                    <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteModal' . $row['id'] . '">
                                         Delete
                                     </button>';
                                     echo '
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal">
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal' . $row['id'] . '">
                                         Edit
                                     </button>';
                                     echo '</li>';
@@ -60,7 +60,7 @@ $result = $temp->get_result();
 
                                     // MODAL DELETE
                                     echo '<!-- Modal -->
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="deleteModal' . $row['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -84,7 +84,7 @@ $result = $temp->get_result();
                                     // MODAL EDIT
                                     echo '
                                     <!-- Modal -->
-                                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editModal' . $row['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

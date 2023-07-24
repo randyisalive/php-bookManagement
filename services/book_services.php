@@ -41,9 +41,10 @@ $bookCoverName = $bookCover['name'];
 $bookCoverTmp = $bookCover['tmp_name'];
 
 
-
-$sql = "INSERT INTO books (title, category, description, total, book_file, cover_page, user_id) VALUES ('$book_title', '$book_category', '$book_description', '$book_quantity', '$bookFileName', '$bookCoverName', '$user_id')";
+$sql = "INSERT INTO books (title, category, description, total, book_file, cover_page, user_id) 
+VALUES (?, ?, ?, ?, ?, ?, ?)";
 $temp = $conn->prepare($sql);
+$temp->bind_param('sssissi', $book_title, $book_category, $book_description, $book_quantity, $bookFileName, $bookCoverName, $user_id);
 if ($temp === false) {
     echo "Error executing query" . $conn->error;
 }

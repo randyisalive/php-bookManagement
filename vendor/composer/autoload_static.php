@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
+class ComposerStaticInit4864c1222b99b8c98c5c28f39d8598eb
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
@@ -14,6 +14,11 @@ class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
         'Z' => 
         array (
             'ZipStream\\' => 10,
+        ),
+        'S' => 
+        array (
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
@@ -26,6 +31,14 @@ class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
         array (
             'Matrix\\' => 7,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
+        ),
         'C' => 
         array (
             'Complex\\' => 8,
@@ -37,14 +50,22 @@ class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -57,6 +78,14 @@ class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'Complex\\' => 
         array (
@@ -76,15 +105,21 @@ class ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
+        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
+        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
+        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
+        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
+        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit4f67ce7c88776c89c7829f7bb2a8d6f2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4864c1222b99b8c98c5c28f39d8598eb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4864c1222b99b8c98c5c28f39d8598eb::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit4864c1222b99b8c98c5c28f39d8598eb::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit4864c1222b99b8c98c5c28f39d8598eb::$classMap;
 
         }, null, ClassLoader::class);
     }

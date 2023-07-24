@@ -60,7 +60,6 @@ session_start();
 
 
                     if (!isset($_GET['category'])) { // check if $filter is assing or not
-                        $filter = $_GET['category'];
                         $filter = "all";
                     } else {
                         $filter = $_GET['category'];
@@ -84,21 +83,21 @@ session_start();
                     $temp->execute();
                     $result = $temp->get_result();
                     if ($result->num_rows > 0) : ?>
-                    <thead>
+                        <thead>
 
-                        <tr>
-                            <th>#</th>
-                            <th scope="col">Book Title</th>
-                            <th scope="col">Category</th>
-                            <th>Option</th>
-                        </tr>
-                    </thead>
+                            <tr>
+                                <th>#</th>
+                                <th scope="col">Book Title</th>
+                                <th scope="col">Category</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
                     <?php else : ?>
-                    <div class="d-flex vh-100 justify-content-center align-items-center">
-                        <h1>NO DATA</h1>
+                        <div class="d-flex vh-100 justify-content-center align-items-center">
+                            <h1>NO DATA</h1>
 
 
-                    </div>
+                        </div>
                     <?php endif; ?>
                     <tbody>
 

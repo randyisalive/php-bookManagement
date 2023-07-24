@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2023 at 01:25 PM
+-- Generation Time: Jul 24, 2023 at 03:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,13 +32,6 @@ CREATE TABLE `bookcategories` (
   `categories` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `bookcategories`
---
-
-INSERT INTO `bookcategories` (`id`, `categories`) VALUES
-(8, 'Fiction');
-
 -- --------------------------------------------------------
 
 --
@@ -55,13 +48,6 @@ CREATE TABLE `books` (
   `cover_page` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `books`
---
-
-INSERT INTO `books` (`id`, `title`, `category`, `description`, `total`, `book_file`, `cover_page`, `user_id`) VALUES
-(25, 'asdad', 'Fiction', '1q2e12d', 12, '7332-17217-1-PB.pdf', 'Screenshot (3).png', 1);
 
 -- --------------------------------------------------------
 
@@ -80,8 +66,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin'),
-(2, 'rei', 'rei');
+(1, 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -116,19 +101,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookcategories`
 --
 ALTER TABLE `bookcategories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
